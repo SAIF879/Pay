@@ -33,6 +33,4 @@ object NavGraphs {
     const val AUTHENTICATION = "authentication"
     const val BOTTOM = "bottom"
     const val ACCOUNT = "account"
-
-
 }

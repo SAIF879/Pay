@@ -8,7 +8,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.toyopay.mainflow.account.ui.AccountScreen
 import com.example.toyopay.mainflow.bottombar.util.BottomBarScreen
+import com.example.toyopay.mainflow.home.ui.HomeScreen
+import com.example.toyopay.mainflow.transfer.ui.TransferScreen
 
 @Composable
 fun BottomNavGraph(navHostController: NavHostController) {
@@ -31,9 +34,7 @@ fun BottomNavGraph(navHostController: NavHostController) {
 
     NavHost(navController = navHostController, startDestination = BottomBarScreen.Home.route) {
         composable(route = BottomBarScreen.Home.route) {
-
-
-
+            HomeScreen()
 
 //            val mainState = marketViewModel.mainState.collectAsState()
 //            MarketScreen(
@@ -46,6 +47,7 @@ fun BottomNavGraph(navHostController: NavHostController) {
         }
         composable(route = BottomBarScreen.Transfer.route) {
 
+            TransferScreen()
 //            val historyViewModel: HistoryViewModel = hiltViewModel()
 //
 //            LaunchedEffect(key1 = navHostController) {
@@ -74,6 +76,7 @@ fun BottomNavGraph(navHostController: NavHostController) {
 //                }
 //            }
 //            searchViewModel.fetchFavouriteList("user23")
+            AccountScreen()
         }
 
 //
