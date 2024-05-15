@@ -34,6 +34,7 @@ fun BottomNavGraph(navHostController: NavHostController) {
 
 
 
+
 //            val mainState = marketViewModel.mainState.collectAsState()
 //            MarketScreen(
 //                mainState,

@@ -22,7 +22,6 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.mainflow.bottombar.util.BottomBarScreen
 import com.example.toyopay.naivgation.BottomNavGraph
 import com.example.toyopay.ui.theme.White

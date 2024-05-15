@@ -4,13 +4,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
 import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayTexts
-import com.example.toyopay.mainflow.authentication.components.GeneratePhoneNumberBox
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
     TayoPayBackground {
         Column(modifier = Modifier.fillMaxSize()) {
 

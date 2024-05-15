@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.toyopay.R
 import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayIcon
@@ -16,7 +18,7 @@ import com.example.toyopay.commonComponents.TayoPayIcon
 
 @Preview
 @Composable
-fun SplashScreen() {
+fun SplashScreen(navController: NavController = NavController(LocalContext.current)) {
     TayoPayBackground {
         Column(
             modifier = Modifier.fillMaxSize().padding(10.dp),

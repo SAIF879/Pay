@@ -8,12 +8,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
 import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayTexts
 
 @Composable
-fun SignUpScreen(){
+fun SignUpScreen(navController: NavController) {
     TayoPayBackground{
         LazyColumn(modifier = Modifier
             .fillMaxSize()

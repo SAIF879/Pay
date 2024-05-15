@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
 import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayTexts
@@ -19,7 +20,7 @@ import com.example.toyopay.ui.theme.NavyBlue
 
 @Preview
 @Composable
-fun SuccessScreen(){
+fun SuccessScreen(navController: NavController) {
     TayoPayBackground {
         Column(
             modifier = Modifier
