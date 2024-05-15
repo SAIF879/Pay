@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.Text
 import com.example.toyopay.ui.theme.NavyBlue
+import com.example.toyopay.ui.theme.White
 
 @Preview
 @Composable
@@ -21,6 +22,8 @@ fun GenerateFunctionalButton(
     horizontalPadding: Int = 15,
     verticalPadding: Int=10,
     isEnabled: Boolean = true,
+    containerColor : Color = NavyBlue,
+    textColor : Color = White,
     modifier: Modifier = Modifier,
     height : Int = 72,
     onClick: () -> Unit = {}
@@ -33,16 +36,12 @@ fun GenerateFunctionalButton(
             .padding(horizontalPadding.dp, verticalPadding.dp),
 
         colors = ButtonDefaults.buttonColors(
-            containerColor = NavyBlue,
+            containerColor = containerColor,
             disabledContainerColor = Color.Transparent,
         ),
         shape = RoundedCornerShape(20.dp),
         enabled = isEnabled
     ) {
-        Text(text = text)
-
-//        if (isEnabled){
-//            CaratrakTexts.MainButtonText(text = text , color = PaleGold)
-//        }
+        TayoPayTexts.MainButtonText(text = text , color = textColor)
     }
 }
