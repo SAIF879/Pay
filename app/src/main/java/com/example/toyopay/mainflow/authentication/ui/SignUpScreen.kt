@@ -22,6 +22,7 @@ import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.mainflow.authentication.components.BottomDisclaimer
 import com.example.toyopay.mainflow.authentication.components.GenerateFillUpBox
 import com.example.toyopay.mainflow.authentication.components.GeneratePhoneNumberBox
+import com.example.toyopay.naivgation.AuthenticationScreens
 import com.example.toyopay.ui.theme.LightBlue
 
 @Composable
@@ -50,14 +51,18 @@ fun SignUpScreen(navController: NavController) {
     var dob = remember {
         mutableStateOf("")
     }
-    TayoPayBackground{
-        LazyColumn(modifier = Modifier
-            .fillMaxSize()
-            .padding(10.dp)) {
+    TayoPayBackground {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(10.dp)
+        ) {
             item { Spacer(modifier = Modifier.size(20.dp)) }
             item {
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(20.dp , 5.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp, 5.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     TayoPayTexts.BlackText(
@@ -68,44 +73,55 @@ fun SignUpScreen(navController: NavController) {
                 }
             }
             item {
-                Row (
-                    modifier = Modifier.fillMaxWidth().padding(20.dp , 5.dp),
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp, 5.dp),
                     verticalAlignment = Alignment.CenterVertically,
-                ){
-                    TayoPayTexts.TextAsSmallHeader(text = "Enter your details to create account" , color = LightBlue)
+                ) {
+                    TayoPayTexts.TextAsSmallHeader(
+                        text = "Enter your details to create account",
+                        color = LightBlue
+                    )
                 }
             }
             item {
-                GenerateFillUpBox( detailText =firstName , placeHolder ="First Name" )
+                GenerateFillUpBox(detailText = firstName, placeHolder = "First Name")
             }
             item {
-                GenerateFillUpBox( detailText =middleName , placeHolder ="Middle Name" )
+                GenerateFillUpBox(detailText = middleName, placeHolder = "Middle Name")
             }
             item {
-                GenerateFillUpBox( detailText =lastName , placeHolder ="Last Name" )
+                GenerateFillUpBox(detailText = lastName, placeHolder = "Last Name")
             }
             item {
-                GenerateFillUpBox( detailText =email , placeHolder ="Email" )
+                GenerateFillUpBox(detailText = email, placeHolder = "Email")
             }
             item {
-                GeneratePhoneNumberBox(phoneNumber = phoneNumber )
+                GeneratePhoneNumberBox(phoneNumber = phoneNumber)
             }
             item {
-                GenerateFillUpBox( detailText =gender , placeHolder ="Gender" )
+                GenerateFillUpBox(detailText = gender, placeHolder = "Gender")
             }
             item {
-                GenerateFillUpBox( detailText =dob , placeHolder ="Date of Birth" )
+                GenerateFillUpBox(detailText = dob, placeHolder = "Date of Birth")
             }
             item {
-                GenerateFillUpBox( detailText =password , placeHolder ="Password" )
+                GenerateFillUpBox(detailText = password, placeHolder = "Password")
             }
             item {
-                GenerateFunctionalButton(text = "Continue"){}
+                GenerateFunctionalButton(text = "Continue") {
+                    navController.navigate(AuthenticationScreens.SuccessScreen.route)
+                }
             }
             item {
-                Row (modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp) , verticalAlignment = Alignment.CenterVertically , horizontalArrangement = Arrangement.Center){
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
                     BottomDisclaimer()
                 }
             }

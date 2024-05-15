@@ -16,6 +16,8 @@ import androidx.navigation.NavController
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
 import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayTexts
+import com.example.toyopay.naivgation.AuthenticationScreens
+import com.example.toyopay.ui.theme.LightBlue
 import com.example.toyopay.ui.theme.NavyBlue
 
 
@@ -26,16 +28,23 @@ fun SuccessScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(10.dp),
-            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            TayoPayTexts.TextAsBoldHeader("SignUp Success !!" , color = Color.Black)
-            Spacer(modifier = Modifier.height(10.dp))
-            TayoPayTexts.TextAsSmallHeader(text = "Your account has been \n created successfully" , color = NavyBlue)
-            Spacer(modifier = Modifier.height(30.dp))
-            GenerateFunctionalButton("Login"){
-
+   Column(modifier = Modifier.weight(0.6f) , verticalArrangement = Arrangement.Center , horizontalAlignment = Alignment.CenterHorizontally) {
+       TayoPayTexts.TextAsBoldHeader("SignUp Success !!" , color = Color.Black)
+       Spacer(modifier = Modifier.height(10.dp))
+       TayoPayTexts.TextAsSmallHeader(text = "Your account has been \n created successfully" , color = LightBlue)
+       Spacer(modifier = Modifier.height(30.dp))
+   }
+            Column(
+                modifier = Modifier.weight(0.4f),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                GenerateFunctionalButton("Login") {
+                    navController.navigate(AuthenticationScreens.LoginScreen.route)
+                }
             }
 
         }
