@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -18,10 +19,12 @@ import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayIcon
 import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.mainflow.authentication.components.ElevatedCard
+import com.example.toyopay.naivgation.AuthenticationScreens
+import com.example.toyopay.ui.theme.LightBlue
 import com.example.toyopay.ui.theme.NavyBlue
 
 
-@Preview
+
 @Composable
 fun GetStartedScreen(navController: NavController) {
     TayoPayBackground {
@@ -38,7 +41,7 @@ fun GetStartedScreen(navController: NavController) {
             ) {
                 TayoPayIcon(icon = R.drawable.icon_tayo_pay , size = 150)
                 TayoPayIcon(icon = R.drawable.img_get , size = 200)
-                GenerateFunctionalButton(text = "Check Rates" ) {}
+                GenerateFunctionalButton(text = "Check Rates" , containerColor = LightBlue , textColor = Color.Black) {}
             }
             ElevatedCard(modifier = Modifier.weight(0.4f)) {
                 Column(
@@ -53,8 +56,12 @@ fun GetStartedScreen(navController: NavController) {
                         maxLines = 2
                     )
                     Spacer(modifier = Modifier.size(10.dp))
-                    GenerateFunctionalButton {}
-                    GenerateFunctionalButton(text = "I hava an account") {}
+                    GenerateFunctionalButton {
+                        navController.navigate(AuthenticationScreens.SignUpScreen.route)
+                    }
+                    GenerateFunctionalButton(text = "I hava an account",containerColor = LightBlue , textColor = Color.Black) {
+                    navController.navigate(AuthenticationScreens.LoginScreen.route)
+                    }
 
 
                 }
