@@ -1,4 +1,5 @@
 package com.example.toyopay.util.others
 
-class Constants {
+object Constants {
+  const val BASE_URL = "https://devapp.tayopay.co.za"
 }
