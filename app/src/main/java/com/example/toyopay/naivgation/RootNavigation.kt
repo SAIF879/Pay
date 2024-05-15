@@ -32,5 +32,5 @@ object NavGraphs {
     const val SPLASH = "splash"
     const val AUTHENTICATION = "authentication"
     const val BOTTOM = "bottom"
-    const val ACCOUNT = "account"
+    const val ACCOUNT = "account_screen"
 }

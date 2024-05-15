@@ -21,14 +21,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
 import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.mainflow.account.components.AccountCardItem
 import com.example.toyopay.mainflow.account.util.accountStaticList
+import com.example.toyopay.naivgation.NavGraphs
 import com.example.toyopay.ui.theme.White
 
 @Composable
-fun AccountScreen() {
+fun AccountScreen(navController: NavController) {
     val context = LocalContext.current
     Box(
         modifier = Modifier
@@ -68,8 +70,9 @@ fun AccountScreen() {
             }
             item { Spacer(modifier = Modifier.size(20.dp)) }
             items(accountStaticList) { item ->
-                AccountCardItem(heading = item){
-                    Toast.makeText(context , "clicked" , Toast.LENGTH_SHORT).show()
+                AccountCardItem(heading = item) {
+                    Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show()
+                    navController.navigate(NavGraphs.ACCOUNT)
                 }
                 Spacer(modifier = Modifier.size(10.dp))
 
