@@ -31,7 +31,16 @@ object TayoPayTexts{
     }
 
     @Composable
-    fun TextAsSmallHeader(text: String = "test", fontsize : Int = 17, modifier: Modifier = Modifier, color: Color = Black) {
+    fun TextAsSemiBold(text:String , color: Color = White , fontSize: Int = 15 ){
+        Text(text = text, style = TextStyle(
+            fontFamily = TayoPayFonts.semiBold,
+            fontSize = fontSize.sp,
+            color = color
+        ) , textAlign = TextAlign.Center ,)
+    }
+
+    @Composable
+    fun TextAsMedium(text: String = "test", fontsize : Int = 17, modifier: Modifier = Modifier, color: Color = Black) {
         Text(
             text = text, style = TextStyle(
                 fontFamily = TayoPayFonts.medium,
@@ -40,21 +49,8 @@ object TayoPayTexts{
             ), textAlign = TextAlign.Center , modifier = modifier
         )
     }
-
     @Composable
-    fun TextAsSubheading(text: String, color : Color = Black, size:Int= 20, modifier: Modifier = Modifier) {
-        Text(
-            text = text, style = TextStyle(
-                fontFamily = TayoPayFonts.semiBold,
-                fontSize = size.sp,
-                color = color
-            ), textAlign = TextAlign.Center, modifier = modifier
-        )
-    }
-
-
-    @Composable
-    fun TextAsHint(text: String , color: Color = Black) {
+    fun TextAsExtraLight(text: String, color: Color = Black) {
         Text(
             text = text, style = TextStyle(
                 fontFamily = TayoPayFonts.extraLight,
@@ -64,34 +60,13 @@ object TayoPayTexts{
         )
     }
 
-    @Composable
-    fun MainButtonText(text: String , color: Color = White) {
-        Text(
-            text = text, style = TextStyle(
-                fontFamily = TayoPayFonts.semiBold,
-                fontSize = 18.sp,
-                color = color
-            ), textAlign = TextAlign.Start, maxLines = 1
-        )
-    }
 
     @Composable
-    fun SubButtonText(text: String , color: Color = White) {
-        Text(
-            text = text, style = TextStyle(
-                fontFamily = TayoPayFonts.semiBold,
-                fontSize = 10.sp,
-                color = color
-            ), textAlign = TextAlign.Start, maxLines = 1
-        )
-    }
-
-    @Composable
-    fun BlackText(text: String, color: Color = White, size: Int = 18, maxLines: Int = 1, modifier: Modifier = Modifier ) {
+    fun TextAsAbsoluteBlack(text: String, color: Color = White, fontsize: Int = 18, maxLines: Int = 1, modifier: Modifier = Modifier ) {
         Text(
             text = text, style = TextStyle(
                 fontFamily = TayoPayFonts.black,
-                fontSize = size.sp,
+                fontSize = fontsize.sp,
                 color = color
             ), textAlign = TextAlign.Start, maxLines = maxLines, modifier=modifier
         )
@@ -113,12 +88,10 @@ fun TextsPreview() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TayoPayTexts.TextAsBoldHeader(text = "bold header")
-            TayoPayTexts.TextAsSmallHeader(text = "small header", color = White)
-            TayoPayTexts.TextAsSubheading(text = " sub heading" , color = White)
-            TayoPayTexts.TextAsHint(text = "hint" , color = White)
-            TayoPayTexts.MainButtonText(text = "main button")
-            TayoPayTexts.SubButtonText(text = " sub button")
-            TayoPayTexts.BlackText(text = " bottom bar")
+            TayoPayTexts.TextAsMedium(text = "small header", color = White)
+            TayoPayTexts.TextAsExtraLight(text = "hint" , color = White)
+            TayoPayTexts.TextAsAbsoluteBlack(text = " bottom bar")
+            TayoPayTexts.TextAsSemiBold(text = "sadasdsadsa")
         }
 
     }

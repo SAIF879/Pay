@@ -50,39 +50,5 @@ val testDataList = listOf(
         amount = "150 USD",
         status = "Paid"
     ),
-    HomeStaticData(
-        phoneNumber = "+7-111-111-1111",
-        name = "Michael Wilson",
-        timeStamp = "2024-05-15 16:45:00",
-        amount = "25 USD",
-        status = "Unpaid"
-    ),
-    HomeStaticData(
-        phoneNumber = "+52-333-333-3333",
-        name = "Sarah Martinez",
-        timeStamp = "2024-05-15 14:10:00",
-        amount = "300 USD",
-        status = "Paid"
-    ),
-    HomeStaticData(
-        phoneNumber = "+49-666-666-6666",
-        name = "David Taylor",
-        timeStamp = "2024-05-15 12:15:00",
-        amount = "80 USD",
-        status = "Unpaid"
-    ),
-    HomeStaticData(
-        phoneNumber = "+81-444-444-4444",
-        name = "Olivia Anderson",
-        timeStamp = "2024-05-15 17:30:00",
-        amount = "120 USD",
-        status = "Paid"
-    ),
-    HomeStaticData(
-        phoneNumber = "+82-222-222-2222",
-        name = "Christopher Thomas",
-        timeStamp = "2024-05-15 18:00:00",
-        amount = "40 USD",
-        status = "Unpaid"
-    )
+
 )

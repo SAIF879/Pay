@@ -20,10 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
-import androidx.compose.ui.graphics.Color.Companion.Cyan
-import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -35,8 +32,6 @@ import androidx.compose.ui.unit.sp
 import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.ui.theme.LightBlack
 import com.example.toyopay.ui.theme.LightGrey
-import com.example.toyopay.ui.theme.NavyBlue
-import com.example.toyopay.ui.theme.White
 import com.example.toyopay.util.fonts.TayoPayFonts
 
 @Composable
@@ -88,7 +83,7 @@ fun GeneratePhoneNumberBox(
 
                     ),
                 placeholder = {
-                    TayoPayTexts.TextAsHint(text = "0 00 00 00 00" , color = LightBlack)
+                    TayoPayTexts.TextAsExtraLight(text = "0 00 00 00 00" , color = LightBlack)
 
                 },
                 keyboardOptions = KeyboardOptions(

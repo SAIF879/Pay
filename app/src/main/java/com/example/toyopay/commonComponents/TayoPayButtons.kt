@@ -42,6 +42,6 @@ fun GenerateFunctionalButton(
         shape = RoundedCornerShape(20.dp),
         enabled = isEnabled
     ) {
-        TayoPayTexts.MainButtonText(text = text , color = textColor)
+        TayoPayTexts.TextAsSemiBold(text = text , color = textColor)
     }
 }

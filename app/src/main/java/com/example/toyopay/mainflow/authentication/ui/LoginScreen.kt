@@ -17,7 +17,7 @@ fun LoginScreen(navController: NavController) {
             GenerateFunctionalButton("Login") {
 
             }
-            TayoPayTexts.TextAsHint(text = "Don't have an account ? Sign Up")
+            TayoPayTexts.TextAsExtraLight(text = "Don't have an account ? Sign Up")
         }
     }
 }

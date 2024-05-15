@@ -47,7 +47,7 @@ fun AccountCardItem(heading: AccountStaticData, onClick: () -> Unit = {}) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            TayoPayTexts.TextAsSubheading(text = heading.heading)
+            TayoPayTexts.TextAsSemiBold(text = heading.heading)
             Icon(
                 imageVector = Icons.Default.ArrowForwardIos,
                 contentDescription = "forward_icon"

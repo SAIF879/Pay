@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,23 +26,31 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.unit.dp
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
+import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.mainflow.home.components.CardTransferItem
 import com.example.toyopay.mainflow.home.util.testDataList
+import com.example.toyopay.ui.theme.LightBlue
+import com.example.toyopay.ui.theme.LightGrey
+import com.example.toyopay.ui.theme.NavyBlue
 
 @Composable
 fun HomeScreen(){
     Box(modifier = Modifier
         .fillMaxSize()
         .background(White)) {
-        Column {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .background(White)) {
             Row(
-                modifier = Modifier.fillMaxWidth().weight(0.1f).padding(10.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(0.1f)
+                    .padding(20.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-
-                Text(text = "Recent Transfers")
-                Text(text = "See All")
+                TayoPayTexts.TextAsMedium(text = "Recent Transfers" , color = NavyBlue)
+                TayoPayTexts.TextAsMedium(text = "See all" , color = LightBlue)
 
             }
 
@@ -50,7 +59,8 @@ fun HomeScreen(){
                 shape = RoundedCornerShape(10.dp),
                 elevation = CardDefaults.elevatedCardElevation(defaultElevation = 20.dp),
                 modifier = Modifier
-                    .fillMaxWidth().weight(0.8f)
+                    .fillMaxWidth()
+                    .weight(0.6f)
                     .padding(15.dp, 10.dp)
             ) {
                 LazyColumn(
@@ -60,11 +70,14 @@ fun HomeScreen(){
                 ) {
                     items(testDataList) { item ->
                         CardTransferItem(details = item)
+                        HorizontalDivider(color = LightGrey)
                     }
                 }
             }
-            GenerateFunctionalButton(modifier = Modifier.weight(0.1f))
-            Spacer(modifier = Modifier.size(100.dp))
+            Column(modifier = Modifier.weight(0.3f) , verticalArrangement = Arrangement.Center , horizontalAlignment = Alignment.CenterHorizontally) {
+                GenerateFunctionalButton()
+            }
+            Spacer(modifier = Modifier.size(50.dp))
             
             
         }

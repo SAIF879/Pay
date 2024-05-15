@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
@@ -18,7 +17,6 @@ import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.naivgation.AuthenticationScreens
 import com.example.toyopay.ui.theme.LightBlue
-import com.example.toyopay.ui.theme.NavyBlue
 
 
 @Composable
@@ -34,7 +32,7 @@ fun SuccessScreen(navController: NavController) {
    Column(modifier = Modifier.weight(0.6f) , verticalArrangement = Arrangement.Center , horizontalAlignment = Alignment.CenterHorizontally) {
        TayoPayTexts.TextAsBoldHeader("SignUp Success !!" , color = Color.Black)
        Spacer(modifier = Modifier.height(10.dp))
-       TayoPayTexts.TextAsSmallHeader(text = "Your account has been \n created successfully" , color = LightBlue)
+       TayoPayTexts.TextAsMedium(text = "Your account has been \n created successfully" , color = LightBlue)
        Spacer(modifier = Modifier.height(30.dp))
    }
             Column(

@@ -94,10 +94,10 @@ fun SignUpScreen(navController: NavController) {
                         .padding(20.dp, 5.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    TayoPayTexts.BlackText(
+                    TayoPayTexts.TextAsAbsoluteBlack(
                         text = "Sign in to TayoPay",
                         color = Color.Black,
-                        size = 20
+                        fontsize = 20
                     )
                 }
             }
@@ -108,7 +108,7 @@ fun SignUpScreen(navController: NavController) {
                         .padding(20.dp, 5.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    TayoPayTexts.TextAsSmallHeader(
+                    TayoPayTexts.TextAsMedium(
                         text = "Enter your details to create account",
                         color = LightBlue
                     )
