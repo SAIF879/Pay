@@ -86,7 +86,7 @@ object TayoPayTexts{
     }
 
     @Composable
-    fun BottomBarText(text: String, color: Color = White, size: Int = 18, maxLines: Int = 1, modifier: Modifier = Modifier ) {
+    fun BlackText(text: String, color: Color = White, size: Int = 18, maxLines: Int = 1, modifier: Modifier = Modifier ) {
         Text(
             text = text, style = TextStyle(
                 fontFamily = TayoPayFonts.black,
@@ -117,7 +117,7 @@ fun TextsPreview() {
             TayoPayTexts.TextAsHint(text = "hint")
             TayoPayTexts.MainButtonText(text = "main button")
             TayoPayTexts.SubButtonText(text = " sub button")
-            TayoPayTexts.BottomBarText(text = " bottom bar")
+            TayoPayTexts.BlackText(text = " bottom bar")
         }
 
     }
