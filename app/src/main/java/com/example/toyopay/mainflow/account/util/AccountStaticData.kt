@@ -1,11 +1,12 @@
 package com.example.toyopay.mainflow.account.util
 
 data class AccountStaticData(
-    val heading : String
+    val heading : String,
+    val clickable : Boolean = false
 )
 
 val accountStaticList = listOf(
-AccountStaticData(heading = "Profile"),
+AccountStaticData(heading = "Profile" , clickable = true),
     AccountStaticData(heading = "Upload Documents"),
     AccountStaticData(heading = "Account Settings"),
     AccountStaticData(heading = "About TayoPay"),

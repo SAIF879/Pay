@@ -1,5 +1,6 @@
 package com.example.toyopay.mainflow.account.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,16 +18,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.toyopay.commonComponents.TayoPayTexts
+import com.example.toyopay.commonComponents.bounceClick
 import com.example.toyopay.mainflow.account.util.AccountStaticData
 import com.example.toyopay.ui.theme.White
 
 
 @Composable
-fun AccountCardItem(heading : AccountStaticData) {
+fun AccountCardItem(heading: AccountStaticData, onClick: () -> Unit = {}) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(60.dp),
+            .height(60.dp)
+            .run {
+                if (heading.clickable) {
+                    clickable(onClick = { onClick.invoke() }).bounceClick()
+                } else {
+                    this
+                }
+            },
         shape = RoundedCornerShape(10.dp),
         colors = CardDefaults.cardColors(containerColor = White),
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 10.dp)
@@ -39,7 +48,10 @@ fun AccountCardItem(heading : AccountStaticData) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             TayoPayTexts.TextAsSubheading(text = heading.heading)
-            Icon(imageVector = Icons.Default.ArrowForwardIos, contentDescription = "forward_icon")
+            Icon(
+                imageVector = Icons.Default.ArrowForwardIos,
+                contentDescription = "forward_icon"
+            )
         }
     }
 }

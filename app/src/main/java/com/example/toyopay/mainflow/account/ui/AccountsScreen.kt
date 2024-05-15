@@ -1,5 +1,6 @@
 package com.example.toyopay.mainflow.account.ui
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
 import com.example.toyopay.commonComponents.TayoPayTexts
@@ -29,9 +31,12 @@ import com.example.toyopay.ui.theme.White
 
 @Composable
 fun AccountScreen() {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.White)) {
+    val context = LocalContext.current
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+    ) {
 
         LazyColumn(
             modifier = Modifier
@@ -39,9 +44,13 @@ fun AccountScreen() {
                 .padding(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            item { 
-                Row (modifier = Modifier.fillMaxWidth() , verticalAlignment = Alignment.CenterVertically , horizontalArrangement = Arrangement.Center){
-                    TayoPayTexts.BlackText(text = "Account" , color = Color.Black)
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    TayoPayTexts.BlackText(text = "Account", color = Color.Black)
                 }
             }
             item {
@@ -55,14 +64,17 @@ fun AccountScreen() {
                     elevation = CardDefaults.elevatedCardElevation(defaultElevation = 20.dp),
                     shape = RoundedCornerShape(10.dp),
                     colors = CardDefaults.cardColors(containerColor = White)
-                ) {
+                ) {}
 
-                }
+
             }
             item { Spacer(modifier = Modifier.size(20.dp)) }
             items(accountStaticList) { item ->
-                AccountCardItem(heading = item)
+                AccountCardItem(heading = item){
+                    Toast.makeText(context , "clicked" , Toast.LENGTH_SHORT).show()
+                }
                 Spacer(modifier = Modifier.size(10.dp))
+
             }
             item {
                 GenerateFunctionalButton()
