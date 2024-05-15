@@ -9,11 +9,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.toyopay.ui.theme.LightBlue
 import com.example.toyopay.ui.theme.NavyBlue
 import com.example.toyopay.ui.theme.White
 import com.example.toyopay.util.fonts.TayoPayFonts
@@ -29,17 +31,17 @@ fun BottomDisclaimer(){
         Spacer(modifier = Modifier.width(0.dp))
         Text(
             buildAnnotatedString {
-                withStyle(style = SpanStyle(fontFamily = TayoPayFonts.extraLight , color = White)) {
-                    append("By continuing, you agree to our ")
+                withStyle(style = SpanStyle(fontFamily = TayoPayFonts.extraLight , color = LightBlue, fontSize = 10.sp)) {
+                    append("By clicking on continue, I agree to TayoPay ")
                 }
-                withStyle(style = SpanStyle(fontFamily = TayoPayFonts.extraLight  , color = NavyBlue)) {
-                    append("Terms of Service ")
+                withStyle(style = SpanStyle(fontFamily = TayoPayFonts.extraLight  , color = Color.Black, fontSize = 10.sp)) {
+                    append("Terms ")
                 }
-                withStyle(style = SpanStyle(fontFamily = TayoPayFonts.extraLight ,color = White)) {
-                    append("and")
+                withStyle(style = SpanStyle(fontFamily = TayoPayFonts.extraLight ,color = LightBlue, fontSize = 10.sp)) {
+                    append("& ")
                 }
-                withStyle(style = SpanStyle(fontFamily = TayoPayFonts.extraLight ,color = White)) {
-                    append(" Privacy Policy")
+                withStyle(style = SpanStyle(fontFamily = TayoPayFonts.extraLight ,color = Color.Black, fontSize = 10.sp)) {
+                    append("Privacy Policy")
                 }
             },
             Modifier.align(Alignment.CenterVertically),

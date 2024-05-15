@@ -18,7 +18,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.Cyan
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -27,45 +29,28 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.toyopay.ui.theme.LightBlack
+import com.example.toyopay.ui.theme.LightGrey
 import com.example.toyopay.ui.theme.NavyBlue
 import com.example.toyopay.ui.theme.White
 import com.example.toyopay.util.fonts.TayoPayFonts
 
 @Composable
 fun GenerateFillUpBox(
-    headingText : String,
-    optional : String = "",
     detailText : MutableState<String>,
     placeHolder : String,
+    modifier: Modifier = Modifier,
     keyboardType: KeyboardType = KeyboardType.Text,
     imeAction: ImeAction = ImeAction.Next,
     onAction: KeyboardActions = KeyboardActions.Default,
-    textPaddingHor : Int = 25,
-    paddingHor : Int = 20,
-    paddingVer : Int = 10
 ){
     Column() {
-        Text(
-            text = buildAnnotatedString {
-                withStyle(
-                    style = SpanStyle(
-                        fontFamily = TayoPayFonts.extraLight,
-                        color = White
-                    )
-                ) { append(headingText) }
-                withStyle(style = SpanStyle(fontFamily = TayoPayFonts.extraLight)) { append("    ") }
-
-                withStyle(style = SpanStyle(fontFamily = TayoPayFonts.extraLight)) { append(optional) }
-            },
-            modifier = Modifier.padding(textPaddingHor.dp, 0.dp),
-
-            )
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .height(80.dp)
-                .padding(paddingHor.dp, paddingVer.dp)
-                .border(1.dp, NavyBlue, shape = RoundedCornerShape(10.dp)),
+                .padding(20.dp, 10.dp)
+                .border(1.dp, LightGrey, shape = RoundedCornerShape(10.dp)),
             contentAlignment = Alignment.Center
         ) {
             TextField(
@@ -76,14 +61,14 @@ fun GenerateFillUpBox(
                     .align(Alignment.Center),
                 onValueChange = { detailText.value = it },
                 colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Cyan,
-                    unfocusedContainerColor = Cyan,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    cursorColor = NavyBlue,
-                    focusedTextColor = NavyBlue,
-                    focusedPlaceholderColor = White,
-                    unfocusedPlaceholderColor = White,
+                    focusedContainerColor = Transparent,
+                    unfocusedContainerColor = Transparent,
+                    focusedIndicatorColor = Transparent,
+                    unfocusedIndicatorColor = Transparent,
+                    cursorColor = Black,
+                    focusedTextColor = Black,
+                    focusedPlaceholderColor = LightBlack,
+                    unfocusedPlaceholderColor = LightBlack,
                 ),
                 placeholder = {
                     Text(
@@ -99,7 +84,7 @@ fun GenerateFillUpBox(
                 keyboardActions = onAction,
                 singleLine = true,
                 textStyle = TextStyle(
-                    fontFamily = TayoPayFonts.extraLight,
+                    fontFamily = TayoPayFonts.semiBold,
                     fontSize = 16.sp
                 )
             )

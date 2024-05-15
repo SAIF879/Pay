@@ -18,7 +18,7 @@ import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.ui.theme.NavyBlue
 
-@Preview
+
 @Composable
 fun SuccessScreen(navController: NavController) {
     TayoPayBackground {

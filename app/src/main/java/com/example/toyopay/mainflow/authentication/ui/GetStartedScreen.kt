@@ -55,6 +55,7 @@ fun GetStartedScreen(navController: NavController) {
                         color = NavyBlue,
                         maxLines = 2
                     )
+
                     Spacer(modifier = Modifier.size(10.dp))
                     GenerateFunctionalButton {
                         navController.navigate(AuthenticationScreens.SignUpScreen.route)

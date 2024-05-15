@@ -17,7 +17,7 @@ fun TayoPayBackground(content: @Composable () -> Unit = {}) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .paint(painterResource(id = R.drawable.bg_tayopay), contentScale = ContentScale.Fit)
+            .paint(painterResource(id = R.drawable.bg_tayopay), contentScale = ContentScale.FillBounds)
     ) {
         content.invoke()
     }

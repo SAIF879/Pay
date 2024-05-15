@@ -113,9 +113,9 @@ fun TextsPreview() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TayoPayTexts.TextAsBoldHeader(text = "bold header")
-            TayoPayTexts.TextAsSmallHeader(text = "small header")
-            TayoPayTexts.TextAsSubheading(text = " sub heading")
-            TayoPayTexts.TextAsHint(text = "hint")
+            TayoPayTexts.TextAsSmallHeader(text = "small header", color = White)
+            TayoPayTexts.TextAsSubheading(text = " sub heading" , color = White)
+            TayoPayTexts.TextAsHint(text = "hint" , color = White)
             TayoPayTexts.MainButtonText(text = "main button")
             TayoPayTexts.SubButtonText(text = " sub button")
             TayoPayTexts.BlackText(text = " bottom bar")
