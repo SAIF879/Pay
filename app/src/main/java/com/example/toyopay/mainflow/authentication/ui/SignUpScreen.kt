@@ -8,9 +8,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.EditCalendar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,11 +22,15 @@ import androidx.navigation.NavController
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
 import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayTexts
+import com.example.toyopay.mainflow.authentication.components.AppDatePicker
 import com.example.toyopay.mainflow.authentication.components.BottomDisclaimer
+import com.example.toyopay.mainflow.authentication.components.ClickableTextBox
 import com.example.toyopay.mainflow.authentication.components.GenerateFillUpBox
 import com.example.toyopay.mainflow.authentication.components.GeneratePhoneNumberBox
 import com.example.toyopay.naivgation.AuthenticationScreens
 import com.example.toyopay.ui.theme.LightBlue
+import java.time.Year
+import java.time.format.DateTimeFormatter
 
 @Composable
 fun SignUpScreen(navController: NavController) {
@@ -48,9 +55,31 @@ fun SignUpScreen(navController: NavController) {
     var gender = remember {
         mutableStateOf("")
     }
-    var dob = remember {
-        mutableStateOf("")
+    val datePickerState = remember {
+        mutableStateOf(false)
     }
+
+    var dob by rememberSaveable() { mutableStateOf<String?>(null) }
+    var age by rememberSaveable() { mutableIntStateOf(0) }
+
+    val isDobValid = rememberSaveable(age, dob) {
+        dob != null && age > 12
+    }
+
+    AppDatePicker(
+        openDialog = datePickerState.value,
+        onDismiss = {
+            datePickerState.value = false
+        }
+    ) { date ->
+        date?.let {
+            dob =
+                it.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString()
+            age = Year.now().value - it.year
+        }
+    }
+
+
     TayoPayBackground {
         LazyColumn(
             modifier = Modifier
@@ -104,7 +133,23 @@ fun SignUpScreen(navController: NavController) {
                 GenerateFillUpBox(detailText = gender, placeHolder = "Gender")
             }
             item {
-                GenerateFillUpBox(detailText = dob, placeHolder = "Date of Birth")
+                ClickableTextBox(
+                    modifier = Modifier.fillMaxWidth(),
+                    label = "DOB",
+                    value = if (isDobValid) {
+                        dob!!
+                    } else if (dob == null) {
+                        "Please select a date"
+                    } else {
+                        "Age must be greater than 10"
+                    },
+                    isValid = isDobValid,
+                    isMandatory = true,
+                    leadingIcon = Icons.Default.EditCalendar
+                ) {
+                    datePickerState.value = true
+                }
+
             }
             item {
                 GenerateFillUpBox(detailText = password, placeHolder = "Password")
