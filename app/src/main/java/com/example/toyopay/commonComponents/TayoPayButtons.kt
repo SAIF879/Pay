@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.Text
-import com.example.toyopay.ui.theme.navyBlue
+import com.example.toyopay.ui.theme.NavyBlue
 
 @Preview
 @Composable
@@ -33,7 +33,7 @@ fun GenerateFunctionalButton(
             .padding(horizontalPadding.dp, verticalPadding.dp),
 
         colors = ButtonDefaults.buttonColors(
-            containerColor = navyBlue,
+            containerColor = NavyBlue,
             disabledContainerColor = Color.Transparent,
         ),
         shape = RoundedCornerShape(20.dp),

@@ -5,7 +5,7 @@ import android.util.Log
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.toyopay.BuildConfig
-import com.example.toyopay.ToyoPayApp
+import com.example.toyopay.TayoPayApp
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -32,7 +32,7 @@ class OkHttpClientHelper {
     }
 
     fun getOkHttpClient(): OkHttpClient {
-        val httpCacheDirectory = File(ToyoPayApp.instance?.cacheDir, "http-cache")
+        val httpCacheDirectory = File(TayoPayApp.instance?.cacheDir, "http-cache")
         val cacheSize = 10 * 1024 * 1024 // 10 MB
         val cache = Cache(httpCacheDirectory, cacheSize.toLong())
         val client: Builder = Builder()
@@ -126,7 +126,7 @@ class OkHttpClientHelper {
 
     private fun getChuckerInterceptor(): ChuckerInterceptor? {
         Log.d("CHUCKER_CHECK", "getChuckerInterceptor: ")
-        val context = ToyoPayApp.instance
+        val context = TayoPayApp.instance
         return context?.let {
             ChuckerInterceptor.Builder(it)
                 .collector(ChuckerCollector(context))

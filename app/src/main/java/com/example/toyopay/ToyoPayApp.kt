@@ -5,10 +5,10 @@ import android.content.Context
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class ToyoPayApp : Application() {
+class TayoPayApp : Application() {
     companion object{
         @JvmStatic
-        var instance : ToyoPayApp? = null
+        var instance : TayoPayApp? = null
         @JvmStatic
         fun getContext() : Context? {
             return instance
