@@ -12,28 +12,24 @@ import androidx.compose.ui.graphics.vector.ImageVector
 sealed class BottomBarScreen(
     val route: String,
     val title: String,
-    val iconFilled: ImageVector,
     val iconOutlined: ImageVector,
 
     ) {
    data object Home : BottomBarScreen(
         route = "home",
         title = "Home",
-        iconFilled = Icons.Filled.Home,
         iconOutlined = Icons.Outlined.Home
     )
 
   data  object Transfer : BottomBarScreen(
         route = "transfer",
         title = "Transfer",
-        iconFilled = Icons.Filled.Checklist,
         iconOutlined = Icons.Outlined.Checklist
     )
 
     data object Account : BottomBarScreen(
         route = "account",
         title = "Account",
-        iconFilled = Icons.Filled.AccountCircle,
         iconOutlined = Icons.Outlined.AccountCircle
     )
 }

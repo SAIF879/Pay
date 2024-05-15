@@ -93,10 +93,10 @@ private fun CardTransactionDetails(modifier: Modifier, details: HomeStaticData) 
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.End
         ) {
-            TayoPayTexts.TextAsSemiBold(
+            TayoPayTexts.TextAsMedium(
                 text = details.amount ?: "NULL",
                 color = Color.Black,
-                fontSize = 17
+                fontsize = 17
             )
         }
         Row(

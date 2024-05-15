@@ -16,6 +16,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.commonComponents.bounceClick
@@ -47,7 +48,7 @@ fun AccountCardItem(heading: AccountStaticData, onClick: () -> Unit = {}) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            TayoPayTexts.TextAsSemiBold(text = heading.heading)
+            TayoPayTexts.TextAsSemiBold(text = heading.heading , color = Color.Black)
             Icon(
                 imageVector = Icons.Default.ArrowForwardIos,
                 contentDescription = "forward_icon"

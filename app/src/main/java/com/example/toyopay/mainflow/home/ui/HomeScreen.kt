@@ -34,13 +34,17 @@ import com.example.toyopay.ui.theme.LightGrey
 import com.example.toyopay.ui.theme.NavyBlue
 
 @Composable
-fun HomeScreen(){
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(White)) {
-        Column(modifier = Modifier
+fun HomeScreen() {
+    Box(
+        modifier = Modifier
             .fillMaxSize()
-            .background(White)) {
+            .background(White)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(White)
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -49,8 +53,8 @@ fun HomeScreen(){
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                TayoPayTexts.TextAsMedium(text = "Recent Transfers" , color = NavyBlue)
-                TayoPayTexts.TextAsMedium(text = "See all" , color = LightBlue)
+                TayoPayTexts.TextAsMedium(text = "Recent Transfers", color = NavyBlue)
+                TayoPayTexts.TextAsMedium(text = "See all", color = LightBlue)
 
             }
 
@@ -74,12 +78,16 @@ fun HomeScreen(){
                     }
                 }
             }
-            Column(modifier = Modifier.weight(0.3f) , verticalArrangement = Arrangement.Center , horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                modifier = Modifier.weight(0.3f),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 GenerateFunctionalButton()
             }
             Spacer(modifier = Modifier.size(50.dp))
-            
-            
+
+
         }
     }
 }
