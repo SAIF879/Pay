@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,7 +31,7 @@ object TayoPayTexts{
     }
 
     @Composable
-    fun TextAsSmallHeader(text: String = "test", fontsize : Int = 17, modifier: Modifier = Modifier, color: Color = White) {
+    fun TextAsSmallHeader(text: String = "test", fontsize : Int = 17, modifier: Modifier = Modifier, color: Color = Black) {
         Text(
             text = text, style = TextStyle(
                 fontFamily = TayoPayFonts.medium,
@@ -41,7 +42,7 @@ object TayoPayTexts{
     }
 
     @Composable
-    fun TextAsSubheading(text: String, color : Color = White, size:Int= 20, modifier: Modifier = Modifier) {
+    fun TextAsSubheading(text: String, color : Color = Black, size:Int= 20, modifier: Modifier = Modifier) {
         Text(
             text = text, style = TextStyle(
                 fontFamily = TayoPayFonts.semiBold,
@@ -53,7 +54,7 @@ object TayoPayTexts{
 
 
     @Composable
-    fun TextAsHint(text: String , color: Color = White) {
+    fun TextAsHint(text: String , color: Color = Black) {
         Text(
             text = text, style = TextStyle(
                 fontFamily = TayoPayFonts.extraLight,
