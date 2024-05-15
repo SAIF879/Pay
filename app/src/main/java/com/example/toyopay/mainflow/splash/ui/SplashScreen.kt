@@ -44,6 +44,10 @@ fun SplashScreen(navController: NavController = NavController(LocalContext.curre
 fun splashNavigation(coroutineScope: CoroutineScope, navController: NavController , context: Context){
     coroutineScope.launch {
         delay(2000)
-        navController.navigate(NavGraphs.AUTHENTICATION)
+        navController.navigate(NavGraphs.AUTHENTICATION){
+            popUpTo(NavGraphs.SPLASH){
+                inclusive = true
+            }
+        }
     }
 }
