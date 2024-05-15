@@ -24,6 +24,7 @@ import com.example.toyopay.commonComponents.GenerateFunctionalButton
 import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayIcon
 import com.example.toyopay.commonComponents.TayoPayTexts
+import com.example.toyopay.mainflow.authentication.components.ElevatedCard
 import com.example.toyopay.ui.theme.NavyBlue
 import com.example.toyopay.ui.theme.White
 
@@ -70,15 +71,3 @@ fun GetStartedScreen() {
     }
 }
 
-@Composable
-fun ElevatedCard(modifier: Modifier, content: @Composable () -> Unit = {}) {
-    Card(
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(10.dp, 10.dp, 0.dp, 0.dp),
-        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 20.dp),
-        colors = CardDefaults.cardColors(containerColor = White)
-    ) {
-
-        content.invoke()
-    }
-}
