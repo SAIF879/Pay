@@ -6,6 +6,7 @@ import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.example.toyopay.BuildConfig
 import com.example.toyopay.TayoPayApp
+import com.example.toyopay.util.sharedPref.SharedPref
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -21,8 +22,10 @@ import java.io.File
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class OkHttpClientHelper {
+class OkHttpClientHelper(private val sharedPref: SharedPref) {
+
 
     companion object {
         const val CONNECT_TIMEOUT = "CONNECT_TIMEOUT"
@@ -141,7 +144,7 @@ class OkHttpClientHelper {
         val authToken = "1234567890"
         val req = request.newBuilder()
             .header("APP-VERSION-CODE", versionCode)
-            .header("Authorization", authToken)
+            .header("Authorization", "Bearer ${sharedPref.authToken?:""}")
             .header("Content-Type", "application/json")
             .header("Accept", "application/json")
         return req.build()

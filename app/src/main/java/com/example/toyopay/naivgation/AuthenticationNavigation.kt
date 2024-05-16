@@ -79,7 +79,11 @@ fun NavGraphBuilder.authenticationNavGraph(navController: NavController ) {
             }
             when(val login=state.loginDetails){
                 is ApiResult.Success->{
-                    navController.navigate(NavGraphs.BOTTOM)
+                    navController.navigate(NavGraphs.BOTTOM){
+                        popUpTo(NavGraphs.AUTHENTICATION){
+                            inclusive = true
+                        }
+                    }
                 }
 
                 is ApiResult.Error -> {
