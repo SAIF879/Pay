@@ -50,11 +50,11 @@ object TayoPayTexts{
         )
     }
     @Composable
-    fun TextAsExtraLight(text: String, color: Color = Black) {
+    fun TextAsExtraLight(text: String, color: Color = Black , fontSize: Int= 12) {
         Text(
             text = text, style = TextStyle(
                 fontFamily = TayoPayFonts.extraLight,
-                fontSize = 12.sp,
+                fontSize = fontSize.sp,
                 color = color
             ), textAlign = TextAlign.Start, maxLines = 1
         )

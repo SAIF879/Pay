@@ -18,12 +18,6 @@ fun RootNavGraph(navHostController: NavHostController) {
         composable(route = NavGraphs.BOTTOM) {
             BottomBarScreen()
         }
-
-
-
-
-
-
     }
 }
 

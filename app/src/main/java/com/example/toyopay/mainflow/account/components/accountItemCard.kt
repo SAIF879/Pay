@@ -31,12 +31,8 @@ fun AccountCardItem(heading: AccountStaticData, onClick: () -> Unit = {}) {
         modifier = Modifier
             .fillMaxWidth()
             .height(60.dp)
-            .run {
-                if (heading.clickable) {
-                    clickable(onClick = { onClick.invoke() }).bounceClick()
-                } else {
-                    this
-                }
+            .clickable {
+                      if (heading.clickable)  onClick.invoke()
             },
         shape = RoundedCornerShape(10.dp),
         colors = CardDefaults.cardColors(containerColor = White),

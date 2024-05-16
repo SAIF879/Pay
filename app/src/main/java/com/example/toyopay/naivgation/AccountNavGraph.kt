@@ -19,7 +19,7 @@ fun NavGraphBuilder.accountNavGraph(
 
 
         composable(route = AccountScreens.ProfileScreen.route) {
-               ProfileScreen(navController = navController)
+               ProfileScreen(navController = navController , state)
         }
 
 

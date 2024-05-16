@@ -32,6 +32,7 @@ import androidx.navigation.NavController
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
 import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.mainflow.account.components.AccountCardItem
+import com.example.toyopay.mainflow.account.components.AccountHeader
 import com.example.toyopay.mainflow.account.util.AccountStates
 import com.example.toyopay.mainflow.account.util.accountStaticList
 import com.example.toyopay.naivgation.NavGraphs
@@ -106,68 +107,3 @@ fun AccountScreen(navController: NavController, state: AccountStates) {
     }
 }
 
-
-@Composable
-fun AccountHeader(details: DetailsUserResponse) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .size(70.dp),
-        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 20.dp),
-        shape = RoundedCornerShape(10.dp),
-        colors = CardDefaults.cardColors(containerColor = White)
-    ) {
-        Column {
-            Row(
-                modifier = Modifier.fillMaxSize(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.End
-            ) {
-                Icon(
-                    imageVector = Icons.Default.AccountCircle,
-                    contentDescription = "account_img",
-                    modifier = Modifier
-                        .weight(0.2f)
-                        .fillMaxHeight()
-                )
-                CardPersonalDetails(modifier = Modifier.weight(0.5f) , details =details )
-                CardContactDetails(modifier = Modifier.weight(0.3f), details = details)
-
-
-            }
-
-
-        }
-    }
-}
-@Composable
-private fun CardPersonalDetails(modifier: Modifier, details: DetailsUserResponse) {
-    Column(modifier = modifier) {
-        TayoPayTexts.TextAsMedium(
-            text = "${details.data?.firstName + details.data?.lastName}" ,
-            color = LightBlack,
-            fontsize = 13
-        )
-        TayoPayTexts.TextAsMedium(
-            text = "${details.data?.id}",
-            color = LightBlack,
-            fontsize = 13
-        )
-    }
-}
-
-@Composable
-private fun CardContactDetails(modifier: Modifier, details: DetailsUserResponse) {
-    Column(modifier = modifier) {
-        TayoPayTexts.TextAsMedium(
-            text = "M ${details.data?.mobilePhone}" ,
-            color = LightBlack,
-            fontsize = 13
-        )
-        TayoPayTexts.TextAsMedium(
-            text = "M ${details.data?.email}" ,
-            color = LightBlack,
-            fontsize = 13
-        )
-    }
-}
