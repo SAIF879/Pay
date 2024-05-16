@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
@@ -46,14 +47,15 @@ fun GenerateFillUpBox(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     enabled: Boolean = true,
     trailingIcon: ImageVector? = null,
-    onClickTrailingIcon: () -> Unit ={}
+    onClick : () -> Unit = {},
+    onClickTrailingIcon: () -> Unit ={},
+
 ){
     Column() {
         Box(
             modifier = modifier
-                .fillMaxWidth()
-                .height(80.dp)
-                .padding(20.dp, 10.dp)
+                .fillMaxWidth().clickable { onClick.invoke() }
+                .height(80.dp).padding(20.dp , 10.dp)
                 .border(1.dp, LightGrey, shape = RoundedCornerShape(10.dp)),
             contentAlignment = Alignment.Center
         ) {
@@ -61,7 +63,7 @@ fun GenerateFillUpBox(
                 value = detailText.value,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(bottom = 1.dp)
+                    .padding(bottom = 2.dp)
                     .align(Alignment.Center),
                 onValueChange = { detailText.value = it },
                 colors = TextFieldDefaults.colors(
@@ -70,12 +72,19 @@ fun GenerateFillUpBox(
                     disabledContainerColor = Transparent,
                     focusedIndicatorColor = Transparent,
                     unfocusedIndicatorColor = Transparent,
-                    cursorColor = Black,
-                    focusedTextColor = Black,
-                    disabledIndicatorColor =LightBlack ,
-                    disabledTextColor = Black,
+                    cursorColor = Transparent,
+                    focusedTextColor = LightBlack,
+                    unfocusedTextColor = LightBlack,
+                    disabledIndicatorColor = Transparent ,
+                    disabledTextColor = LightBlack,
                     focusedPlaceholderColor = LightBlack,
                     unfocusedPlaceholderColor = LightBlack,
+                    disabledTrailingIconColor = Gray,
+                    disabledLabelColor = Transparent,
+                    focusedLabelColor = Transparent,
+                    errorIndicatorColor = Transparent,
+                    disabledPlaceholderColor = LightBlack
+
 
                 ),
                 placeholder = {
@@ -105,7 +114,7 @@ fun GenerateFillUpBox(
                                 onClickTrailingIcon?.invoke()
                             }
                         ,
-                            tint = Black)
+                            )
                     }
                 },
                 enabled=enabled

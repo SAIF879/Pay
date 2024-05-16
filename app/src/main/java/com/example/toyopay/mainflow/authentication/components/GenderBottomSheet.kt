@@ -58,9 +58,9 @@ fun GenderUi(genderIndex: MutableIntState, genderValue: MutableState<String>) {
         genderValue.value=GenderTypes.entries[it - 1].title
     }
 
-    GenerateFillUpBox(detailText = genderValue , placeHolder ="Gender" , trailingIcon = Icons.Default.ArrowForwardIos, enabled = false){
-        showBottomSheet = true
-    }
+    GenerateFillUpBox(detailText = genderValue , placeHolder ="Gender" , trailingIcon = Icons.Default.ArrowForwardIos,
+        enabled = false , onClick = { showBottomSheet = true}
+    )
 
     GenderBottomSheetSelector(selectedOption = genderIndex.intValue,
         onStateChange = {
@@ -109,7 +109,6 @@ fun AppModalBottomSheet(
 ) {
     if (sheetVisible) {
 
-        val context = LocalContext.current
         var isKeyboardOpen by remember { mutableStateOf(false) }
         val ime = WindowInsets.ime
         val navbar = WindowInsets.navigationBars

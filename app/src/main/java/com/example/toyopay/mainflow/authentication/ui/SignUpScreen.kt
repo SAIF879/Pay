@@ -64,7 +64,7 @@ fun SignUpScreen(navController: NavController) {
         mutableIntStateOf(-1)
     }
     val genderValue= remember {
-        mutableStateOf(if (genderIndex.intValue!=-1) GenderTypes.entries[genderIndex.intValue - 1].title else "Select Gender")
+        mutableStateOf(if (genderIndex.intValue!=-1) GenderTypes.entries[genderIndex.intValue - 1].title else "Gender")
     }
     val datePickerState = remember {
         mutableStateOf(false)
@@ -149,9 +149,14 @@ fun SignUpScreen(navController: NavController) {
             }
             item {
 
-                GenerateFillUpBox(detailText = dob, placeHolder ="Date Of Birth" , trailingIcon = Icons.Default.CalendarToday , enabled = false){
-                    datePickerState.value = true
-                }
+                GenerateFillUpBox(
+                    detailText = dob,
+                    placeHolder = "Date Of Birth",
+                    trailingIcon = Icons.Default.CalendarToday,
+                    enabled = false,
+                    onClick = {
+                        datePickerState.value = true
+                    })
 
             }
             item {
