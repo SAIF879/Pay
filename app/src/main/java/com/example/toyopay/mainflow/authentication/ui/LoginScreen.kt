@@ -26,9 +26,7 @@ import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.mainflow.authentication.components.GenerateFillUpBox
 import com.example.toyopay.mainflow.authentication.components.GeneratePhoneNumberBox
 import com.example.toyopay.naivgation.Login
-import com.example.toyopay.naivgation.SignUp
 import com.example.toyopay.networkServices.data.LoginRequestBody
-import com.example.toyopay.networkServices.data.RegisterRequestBody
 import com.example.toyopay.ui.theme.LightBlue
 import com.example.toyopay.ui.theme.NavyBlue
 
@@ -108,7 +106,7 @@ fun LoginScreen(navController: NavController,
             ) {
                 GenerateFunctionalButton(text = "Login" , isEnabled =isValid ){
                     putUserDetails(Login.LoginDetails(LoginRequestBody(
-                        phoneNumber = phoneNumber.value,
+                        username = "27${phoneNumber.value}",
                         password = password.value
                     )))
 

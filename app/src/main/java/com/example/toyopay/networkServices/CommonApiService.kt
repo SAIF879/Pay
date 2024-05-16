@@ -23,7 +23,7 @@ interface CommonApiService {
     suspend fun loginUser(@Body requestBody : LoginRequestBody) : Response<LoginUserResponse>
 
     @GET("/user/detail")
-    suspend fun getUserDetails(): Response<List<DetailsUserResponse>>
+    suspend fun getUserDetails(): Response<DetailsUserResponse>
 
 
 }

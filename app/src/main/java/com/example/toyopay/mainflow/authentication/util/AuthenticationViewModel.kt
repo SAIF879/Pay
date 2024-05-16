@@ -43,13 +43,13 @@ class AuthenticationViewModel @Inject constructor(
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.postUserLoginDetails(details).collect {
-                _authenticationStates.value = _authenticationStates.value.copy(loginDetails = it)
-                Log.d("LOGIN_RESPONSE", "registerUser: $it ")
                 if (it is ApiResult.Success) {
                     it.data?.data?.authToken?.let { token ->
                         sharedPref.authToken = token
                     }
                 }
+                _authenticationStates.value = _authenticationStates.value.copy(loginDetails = it)
+                Log.d("LOGIN_RESPONSE", "registerUser: $it ")
             }
         }
     }

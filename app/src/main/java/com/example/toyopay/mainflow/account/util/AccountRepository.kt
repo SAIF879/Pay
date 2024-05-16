@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class AccountRepository @Inject constructor(private val api : CommonApiService) {
 
-    suspend fun getProfileDetails(): Flow<ApiResult<List<DetailsUserResponse>>> = flow {
+    suspend fun getProfileDetails(): Flow<ApiResult<DetailsUserResponse>> = flow {
         emit(ApiResult.Loading)
         try {
             val profileData = api.getUserDetails()

@@ -141,12 +141,13 @@ class OkHttpClientHelper(private val sharedPref: SharedPref) {
 
     private fun getHeaders(request: Request): Request {
         val versionCode = BuildConfig.VERSION_CODE.toString()
-        val authToken = "1234567890"
         val req = request.newBuilder()
             .header("APP-VERSION-CODE", versionCode)
-            .header("Authorization", "Bearer ${sharedPref.authToken?:""}")
             .header("Content-Type", "application/json")
             .header("Accept", "application/json")
+        sharedPref.authToken?.let {
+            req.header("Authorization", "Bearer ${sharedPref.authToken?:""}")
+        }
         return req.build()
     }
 

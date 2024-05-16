@@ -1,6 +1,6 @@
 package com.example.toyopay.networkServices.data
 
 data class LoginRequestBody(
-    val phoneNumber: String,
+    val username: String,
     val password: String
 )

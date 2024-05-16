@@ -45,7 +45,11 @@ fun NavGraphBuilder.authenticationNavGraph(navController: NavController ) {
                 }
                 is ApiResult.Success -> {
                     LaunchedEffect(key1 = Unit) {
-                        navController.navigate(AuthenticationScreens.SuccessScreen.route)
+                        navController.navigate(AuthenticationScreens.SuccessScreen.route){
+                            popUpTo(NavGraphs.AUTHENTICATION){
+                                inclusive = true
+                            }
+                        }
                     }
 
                 }

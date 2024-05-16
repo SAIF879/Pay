@@ -1,11 +1,14 @@
 package com.example.toyopay.mainflow.account.ui
 
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,8 +16,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,12 +32,17 @@ import androidx.navigation.NavController
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
 import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.mainflow.account.components.AccountCardItem
+import com.example.toyopay.mainflow.account.util.AccountStates
 import com.example.toyopay.mainflow.account.util.accountStaticList
 import com.example.toyopay.naivgation.NavGraphs
+import com.example.toyopay.networkServices.ApiResult
+import com.example.toyopay.networkServices.data.DetailsUserResponse
+import com.example.toyopay.ui.theme.LightBlack
+import com.example.toyopay.ui.theme.LightBlue
 import com.example.toyopay.ui.theme.White
 
 @Composable
-fun AccountScreen(navController: NavController) {
+fun AccountScreen(navController: NavController, state: AccountStates) {
     val context = LocalContext.current
     Box(
         modifier = Modifier
@@ -57,14 +69,19 @@ fun AccountScreen(navController: NavController) {
                 Spacer(modifier = Modifier.size(30.dp))
             }
             item {
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .size(70.dp),
-                    elevation = CardDefaults.elevatedCardElevation(defaultElevation = 20.dp),
-                    shape = RoundedCornerShape(10.dp),
-                    colors = CardDefaults.cardColors(containerColor = White)
-                ) {}
+
+                when(state.userDetails){
+                    is ApiResult.Error -> {
+                        
+                    }
+                    ApiResult.Loading -> {
+                       CircularProgressIndicator(color = LightBlue)
+                    }
+                    is ApiResult.Success -> {
+                        state.userDetails.data?.let { AccountHeader(details = it) }
+                    }
+                    null -> Unit
+                }
 
 
             }
@@ -86,5 +103,71 @@ fun AccountScreen(navController: NavController) {
 
         }
 
+    }
+}
+
+
+@Composable
+fun AccountHeader(details: DetailsUserResponse) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .size(70.dp),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 20.dp),
+        shape = RoundedCornerShape(10.dp),
+        colors = CardDefaults.cardColors(containerColor = White)
+    ) {
+        Column {
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.End
+            ) {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = "account_img",
+                    modifier = Modifier
+                        .weight(0.2f)
+                        .fillMaxHeight()
+                )
+                CardPersonalDetails(modifier = Modifier.weight(0.5f) , details =details )
+                CardContactDetails(modifier = Modifier.weight(0.3f), details = details)
+
+
+            }
+
+
+        }
+    }
+}
+@Composable
+private fun CardPersonalDetails(modifier: Modifier, details: DetailsUserResponse) {
+    Column(modifier = modifier) {
+        TayoPayTexts.TextAsMedium(
+            text = "${details.data?.firstName + details.data?.lastName}" ,
+            color = LightBlack,
+            fontsize = 13
+        )
+        TayoPayTexts.TextAsMedium(
+            text = "${details.data?.id}",
+            color = LightBlack,
+            fontsize = 13
+        )
+    }
+}
+
+@Composable
+private fun CardContactDetails(modifier: Modifier, details: DetailsUserResponse) {
+    Column(modifier = modifier) {
+        TayoPayTexts.TextAsMedium(
+            text = "M ${details.data?.mobilePhone}" ,
+            color = LightBlack,
+            fontsize = 13
+        )
+        TayoPayTexts.TextAsMedium(
+            text = "M ${details.data?.email}" ,
+            color = LightBlack,
+            fontsize = 13
+        )
     }
 }

@@ -23,17 +23,10 @@ import com.example.toyopay.mainflow.home.util.HomeStaticData
 import com.example.toyopay.ui.theme.LightBlack
 import com.example.toyopay.ui.theme.LightBlue
 import com.example.toyopay.ui.theme.White
-@Preview
+
 @Composable
 fun CardTransferItem(
-    details: HomeStaticData = HomeStaticData(
-        image = Icons.Default.AccountCircle,
-        phoneNumber = "8789898989",
-        name = "asadasd",
-        timeStamp = "asdasdsasadsa",
-        amount = "asdasd",
-        status = "PAID"
-    )
+    details: HomeStaticData
 ) {
     Card(
         modifier = Modifier
