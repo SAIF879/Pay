@@ -63,9 +63,7 @@ fun AppDatePicker(
                     DatePicker(
                         state = datePickerState,
                         title = {
-//                            HeadlineTexts.Medium(text = "Hello")
                         }
-//                        modifier = Modifier.padding(horizontal = AppTheme.spacing.level2)
                     )
                     Row(
                         horizontalArrangement = Arrangement.End,

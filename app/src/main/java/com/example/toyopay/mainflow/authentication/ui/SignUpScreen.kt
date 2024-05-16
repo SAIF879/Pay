@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.EditCalendar
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -19,8 +21,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -31,6 +31,8 @@ import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.mainflow.authentication.components.AppDatePicker
 import com.example.toyopay.mainflow.authentication.components.BottomDisclaimer
 import com.example.toyopay.mainflow.authentication.components.ClickableTextBox
+import com.example.toyopay.mainflow.authentication.components.GenderTypes
+import com.example.toyopay.mainflow.authentication.components.GenderUi
 import com.example.toyopay.mainflow.authentication.components.GenerateFillUpBox
 import com.example.toyopay.mainflow.authentication.components.GeneratePhoneNumberBox
 import com.example.toyopay.naivgation.AuthenticationScreens
@@ -58,8 +60,11 @@ fun SignUpScreen(navController: NavController) {
     var password = remember {
         mutableStateOf("")
     }
-    var gender = remember {
-        mutableStateOf("")
+    val genderIndex= remember {
+        mutableIntStateOf(-1)
+    }
+    val genderValue= remember {
+        mutableStateOf(if (genderIndex.intValue!=-1) GenderTypes.entries[genderIndex.intValue - 1].title else "Select Gender")
     }
     val datePickerState = remember {
         mutableStateOf(false)
@@ -69,11 +74,11 @@ fun SignUpScreen(navController: NavController) {
         mutableStateOf(true)
     }
 
-    var dob by rememberSaveable() { mutableStateOf<String?>(null) }
+    var dob = rememberSaveable() { mutableStateOf<String>("") }
     var age by rememberSaveable() { mutableIntStateOf(0) }
 
     val isDobValid = rememberSaveable(age, dob) {
-        dob != null && age > 12
+        dob.value.isNotEmpty() && age > 12
     }
 
     AppDatePicker(
@@ -83,7 +88,7 @@ fun SignUpScreen(navController: NavController) {
         }
     ) { date ->
         date?.let {
-            dob =
+            dob.value =
                 it.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString()
             age = Year.now().value - it.year
         }
@@ -140,23 +145,11 @@ fun SignUpScreen(navController: NavController) {
                 GeneratePhoneNumberBox(phoneNumber = phoneNumber)
             }
             item {
-                GenerateFillUpBox(detailText = gender, placeHolder = "Gender")
+              GenderUi(genderIndex , genderValue)
             }
             item {
-                ClickableTextBox(
-                    modifier = Modifier.fillMaxWidth(),
-                    label = "DOB",
-                    value = if (isDobValid) {
-                        dob!!
-                    } else if (dob == null) {
-                        "Please select a date"
-                    } else {
-                        "Age must be greater than 10"
-                    },
-                    isValid = isDobValid,
-                    isMandatory = true,
-                    leadingIcon = Icons.Default.EditCalendar
-                ) {
+
+                GenerateFillUpBox(detailText = dob, placeHolder ="Date Of Birth" , trailingIcon = Icons.Default.CalendarToday , enabled = false){
                     datePickerState.value = true
                 }
 

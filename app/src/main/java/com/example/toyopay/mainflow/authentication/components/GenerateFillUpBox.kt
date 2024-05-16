@@ -67,12 +67,16 @@ fun GenerateFillUpBox(
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Transparent,
                     unfocusedContainerColor = Transparent,
+                    disabledContainerColor = Transparent,
                     focusedIndicatorColor = Transparent,
                     unfocusedIndicatorColor = Transparent,
                     cursorColor = Black,
                     focusedTextColor = Black,
+                    disabledIndicatorColor =LightBlack ,
+                    disabledTextColor = Black,
                     focusedPlaceholderColor = LightBlack,
                     unfocusedPlaceholderColor = LightBlack,
+
                 ),
                 placeholder = {
                     Text(
@@ -99,7 +103,9 @@ fun GenerateFillUpBox(
                                 MutableInteractionSource()
                             }, indication = LocalIndication.current) {
                                 onClickTrailingIcon?.invoke()
-                            })
+                            }
+                        ,
+                            tint = Black)
                     }
                 },
                 enabled=enabled
