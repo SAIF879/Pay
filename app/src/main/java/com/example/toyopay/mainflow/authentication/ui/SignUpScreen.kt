@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.EditCalendar
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
@@ -17,6 +19,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.toyopay.commonComponents.GenerateFunctionalButton
@@ -57,6 +63,10 @@ fun SignUpScreen(navController: NavController) {
     }
     val datePickerState = remember {
         mutableStateOf(false)
+    }
+
+    val visibilityGone = remember {
+        mutableStateOf(true)
     }
 
     var dob by rememberSaveable() { mutableStateOf<String?>(null) }
@@ -152,7 +162,15 @@ fun SignUpScreen(navController: NavController) {
 
             }
             item {
-                GenerateFillUpBox(detailText = password, placeHolder = "Password")
+                GenerateFillUpBox(
+                    detailText = password,
+                    placeHolder = "PassWord",
+                    trailingIcon = if (visibilityGone.value) Icons.Default.VisibilityOff else Icons.Default.Visibility,
+                    visualTransformation =if (visibilityGone.value) PasswordVisualTransformation() else VisualTransformation.None
+                ) {
+                    visibilityGone.value=!visibilityGone.value
+
+                }
             }
             item {
                 GenerateFunctionalButton(text = "Continue") {

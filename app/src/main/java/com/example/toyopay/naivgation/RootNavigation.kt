@@ -11,7 +11,7 @@ fun RootNavGraph(navHostController: NavHostController) {
     NavHost(
         navController = navHostController,
         route = NavGraphs.ROOT,
-        startDestination = NavGraphs.BOTTOM
+        startDestination = NavGraphs.SPLASH
     ) {
         splashNavGraph(navHostController)
        authenticationNavGraph(navHostController)
