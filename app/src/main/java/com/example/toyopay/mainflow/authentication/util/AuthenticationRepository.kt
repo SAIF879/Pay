@@ -18,7 +18,12 @@ class AuthenticationRepository  @Inject constructor(private val api : CommonApiS
             emit(ApiResult.Loading)
             try {
                 val registerData = api.registerUser(requestBody)
-                emit(ApiResult.Success(registerData.body()))
+                if (registerData.isSuccessful){
+                    emit(ApiResult.Success(registerData.body()))
+                }else{
+                    emit(ApiResult.Error(registerData.code().toString()))
+                }
+
             } catch (e: Exception) {
                 emit(ApiResult.Error(e.localizedMessage ?: "Unknown error"))
             }
@@ -29,7 +34,12 @@ class AuthenticationRepository  @Inject constructor(private val api : CommonApiS
             emit(ApiResult.Loading)
             try {
                 val loginData = api.loginUser(requestBody)
-                emit(ApiResult.Success(loginData.body()))
+                if (loginData.isSuccessful){
+                    emit(ApiResult.Success(loginData.body()))
+                }else{
+                    emit(ApiResult.Error("Error"))
+                }
+
             } catch (e: Exception) {
                 emit(ApiResult.Error(e.localizedMessage ?: "Unknown error"))
             }

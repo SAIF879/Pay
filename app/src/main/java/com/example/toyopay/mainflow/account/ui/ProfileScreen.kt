@@ -98,6 +98,7 @@ fun ProfileItemBox(heading : String , details : String ){
             .height(70.dp),
         shape = RoundedCornerShape(10.dp),
         colors = CardDefaults.cardColors(containerColor = White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
     ){
         Column (Modifier.padding(10.dp)){
             TayoPayTexts.TextAsExtraLight(text = heading , color = LightBlack , fontSize = 14 )

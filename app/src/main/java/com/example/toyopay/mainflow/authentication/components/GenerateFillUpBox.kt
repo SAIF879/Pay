@@ -72,7 +72,7 @@ fun GenerateFillUpBox(
                     disabledContainerColor = Transparent,
                     focusedIndicatorColor = Transparent,
                     unfocusedIndicatorColor = Transparent,
-                    cursorColor = Transparent,
+                    cursorColor = LightBlack,
                     focusedTextColor = LightBlack,
                     unfocusedTextColor = LightBlack,
                     disabledIndicatorColor = Transparent ,
