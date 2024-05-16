@@ -37,7 +37,7 @@ import com.example.toyopay.util.fonts.TayoPayFonts
 @Composable
 fun GeneratePhoneNumberBox(
     phoneNumber : MutableState<String>,
-    limit : Int = 10,
+    limit : Int = 9,
     modifier: Modifier = Modifier,
     keyboardType: KeyboardType = KeyboardType.Number,
     imeAction: ImeAction = ImeAction.Next,
@@ -45,7 +45,7 @@ fun GeneratePhoneNumberBox(
 ){
     Box(modifier = modifier
         .fillMaxWidth()
-        .height(70.dp)
+        .height(80.dp)
         .padding(20.dp, 10.dp)
         .border(1.dp, LightGrey, shape = RoundedCornerShape(10.dp)),
         contentAlignment = Alignment.Center

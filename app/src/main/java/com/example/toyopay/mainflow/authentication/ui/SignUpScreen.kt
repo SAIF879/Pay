@@ -21,6 +21,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -36,12 +37,20 @@ import com.example.toyopay.mainflow.authentication.components.GenderUi
 import com.example.toyopay.mainflow.authentication.components.GenerateFillUpBox
 import com.example.toyopay.mainflow.authentication.components.GeneratePhoneNumberBox
 import com.example.toyopay.naivgation.AuthenticationScreens
+import com.example.toyopay.naivgation.SignUp
+import com.example.toyopay.networkServices.data.RegisterRequestBody
 import com.example.toyopay.ui.theme.LightBlue
 import java.time.Year
 import java.time.format.DateTimeFormatter
 
 @Composable
-fun SignUpScreen(navController: NavController) {
+fun SignUpScreen(
+    navController: NavController,
+    putUserDetails: (SignUp) -> Unit
+
+) {
+
+
     var firstName = remember {
         mutableStateOf("")
     }
@@ -89,11 +98,39 @@ fun SignUpScreen(navController: NavController) {
     ) { date ->
         date?.let {
             dob.value =
-                it.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString()
+                it.format(DateTimeFormatter.ofPattern("yyyy/MM/dd")).toString()
             age = Year.now().value - it.year
         }
     }
 
+
+    fun areFieldsValid(
+        firstName: String,
+        middleName: String,
+        lastName: String,
+        email: String,
+        phoneNumber: String,
+        password: String,
+        genderValue: String
+    ): Boolean {
+        return firstName.isNotEmpty() &&
+                middleName.isNotEmpty() &&
+                lastName.isNotEmpty() &&
+                email.isNotEmpty() &&
+                phoneNumber.isNotEmpty() &&
+                password.isNotEmpty() &&
+                genderValue != "Gender"
+    }
+
+    val isValid = areFieldsValid(
+        firstName = firstName.value,
+        middleName = middleName.value,
+        lastName = lastName.value,
+        email = email.value,
+        phoneNumber = phoneNumber.value,
+        password = password.value,
+        genderValue = genderValue.value
+    )
 
     TayoPayBackground {
         LazyColumn(
@@ -139,7 +176,7 @@ fun SignUpScreen(navController: NavController) {
                 GenerateFillUpBox(detailText = lastName, placeHolder = "Last Name")
             }
             item {
-                GenerateFillUpBox(detailText = email, placeHolder = "Email")
+                GenerateFillUpBox(detailText = email, placeHolder = "Email" , keyboardType = KeyboardType.Email)
             }
             item {
                 GeneratePhoneNumberBox(phoneNumber = phoneNumber)
@@ -171,8 +208,17 @@ fun SignUpScreen(navController: NavController) {
                 }
             }
             item {
-                GenerateFunctionalButton(text = "Continue") {
-                    navController.navigate(AuthenticationScreens.SuccessScreen.route)
+                GenerateFunctionalButton(text = "Continue" , isEnabled = isValid) {
+                    putUserDetails(SignUp.SignUpDetails(RegisterRequestBody(
+                        firstName = firstName.value,
+                        middleName = middleName.value,
+                        lastName = lastName.value,
+                        email = email.value,
+                        mobilePhone = "27${phoneNumber.value}",
+                        password = password.value,
+                        genderId = genderIndex.intValue,
+                        dateOfBirth = dob.value
+                    )))
                 }
             }
             item {

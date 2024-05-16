@@ -56,6 +56,7 @@ fun GenderUi(genderIndex: MutableIntState, genderValue: MutableState<String>) {
 
     val onValueChange:(Int)->Unit={
         genderValue.value=GenderTypes.entries[it - 1].title
+        genderIndex.intValue=it
     }
 
     GenerateFillUpBox(detailText = genderValue , placeHolder ="Gender" , trailingIcon = Icons.Default.ArrowForwardIos,
