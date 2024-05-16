@@ -25,11 +25,18 @@ import com.example.toyopay.commonComponents.TayoPayBackground
 import com.example.toyopay.commonComponents.TayoPayTexts
 import com.example.toyopay.mainflow.authentication.components.GenerateFillUpBox
 import com.example.toyopay.mainflow.authentication.components.GeneratePhoneNumberBox
+import com.example.toyopay.naivgation.Login
+import com.example.toyopay.naivgation.SignUp
+import com.example.toyopay.networkServices.data.LoginRequestBody
+import com.example.toyopay.networkServices.data.RegisterRequestBody
 import com.example.toyopay.ui.theme.LightBlue
 import com.example.toyopay.ui.theme.NavyBlue
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun LoginScreen(navController: NavController,
+                putUserDetails: (Login) -> Unit
+) {
+
     var phoneNumber = remember {
         mutableStateOf("")
     }
@@ -40,6 +47,18 @@ fun LoginScreen(navController: NavController) {
         mutableStateOf(true)
     }
 
+    fun areFieldsValid(
+        phoneNumber: String,
+        password: String,
+    ): Boolean {
+        return phoneNumber.isNotEmpty() && password.isNotEmpty()
+    }
+
+    val isValid = areFieldsValid(
+        phoneNumber = phoneNumber.value,
+        password = password.value,
+    )
+
     TayoPayBackground {
         Column(modifier = Modifier
             .fillMaxSize()
@@ -49,7 +68,10 @@ fun LoginScreen(navController: NavController) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Row(Modifier.fillMaxWidth().padding(30.dp, 10.dp) , verticalAlignment = Alignment.CenterVertically , horizontalArrangement = Arrangement.Start) {
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(30.dp, 10.dp) , verticalAlignment = Alignment.CenterVertically , horizontalArrangement = Arrangement.Start) {
                     TayoPayTexts.TextAsAbsoluteBlack(text = "Log In" , color = NavyBlue)
                 }
                 TayoPayTexts.TextAsMedium(
@@ -84,7 +106,12 @@ fun LoginScreen(navController: NavController) {
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                GenerateFunctionalButton(text = "Login"){
+                GenerateFunctionalButton(text = "Login" , isEnabled =isValid ){
+                    putUserDetails(Login.LoginDetails(LoginRequestBody(
+                        phoneNumber = phoneNumber.value,
+                        password = password.value
+                    )))
+
 
                 }
 

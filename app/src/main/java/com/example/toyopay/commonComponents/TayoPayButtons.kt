@@ -37,7 +37,7 @@ fun GenerateFunctionalButton(
 
         colors = ButtonDefaults.buttonColors(
             containerColor = containerColor.copy(alpha = 0.9f),
-            disabledContainerColor = Color.Transparent,
+            disabledContainerColor = Color.Gray,
         ),
         shape = RoundedCornerShape(20.dp),
         enabled = isEnabled

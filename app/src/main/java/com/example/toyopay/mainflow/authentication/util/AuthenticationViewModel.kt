@@ -32,17 +32,13 @@ class AuthenticationViewModel @Inject constructor(private val repository: Authen
         }
     }
 
-    fun registerLogin(
-        username: String,
-        password: String,
+    fun loginUser(
+        details:LoginRequestBody
     ) {
-        val reqBody = LoginRequestBody(
-            username,
-            password
-        )
         viewModelScope.launch(Dispatchers.IO) {
-            repository.postUserLoginDetails(reqBody).collect {
+            repository.postUserLoginDetails(details).collect {
                 _authenticationStates.value = _authenticationStates.value.copy(loginDetails = it)
+                Log.d("LOGIN_RESPONSE", "registerUser: $it ")
             }
         }
     }
